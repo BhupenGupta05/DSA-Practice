@@ -1,3 +1,6 @@
+//Minimum path effort using brute force approach
+//Time complexity: O(4^(m*n))
+
 #include<bits/stdc++.h>
 
 using namespace std;

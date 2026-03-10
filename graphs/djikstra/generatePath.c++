@@ -1,3 +1,6 @@
+//Generate all paths from (0,0) to (m-1,n-1) in a matrix
+//Time complexity: O(4^(m*n)) 
+
 #include<bits/stdc++.h>
 
 using namespace std;
