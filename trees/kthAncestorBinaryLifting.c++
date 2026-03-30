@@ -34,7 +34,7 @@ void dfs(int node, int parent) {
 
 int kthAncestor(int k, int node) {
 	for(int i=0; i<LOG; i++) {
-		if(k & (1 << i)) {
+		if(k & (1 << i)) {       // << -> 1*(2^i); >> -> 1/(2^i)
 			node = up[node][i];
 			if(node == -1) return -1;
 		}
