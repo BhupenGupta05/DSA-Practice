@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> dist;
+vector<long long> dist;
 
-vector<int> nearestShops(vector<vector<int>>& graph, vector<int>& shops) {
-	queue<int> toVisit;
+vector<long long> nearestShops(vector<vector<long long>>& graph, vector<long long>& shops) {
+	queue<long long> toVisit;
 
 	for(auto sh: shops) {
 		dist[sh] = 0;
@@ -12,7 +12,7 @@ vector<int> nearestShops(vector<vector<int>>& graph, vector<int>& shops) {
 	}
 
 	while(!toVisit.empty()) {
-		int curr = toVisit.front();
+		long long curr = toVisit.front();
 		toVisit.pop();
 
 		for(auto neighbour: graph[curr]) {
@@ -24,13 +24,13 @@ vector<int> nearestShops(vector<vector<int>>& graph, vector<int>& shops) {
 	}
 	
 	for(auto sh: shops) {
-	    int best = INT_MAX;
+	    long long best = LLONG_MAX;
 	    for(auto neighbour: graph[sh]) {
-	        if(dist[neighbour] == 0) {
-	            best = min(best,dist[sh]+1);
+	        if(dist[neighbour] != -1) {
+	            best = min(best,dist[neighbour]+1);
 	        }
 	    }
-	    dist[sh] = best == INT_MAX ? -1 : best;
+	    dist[sh] = best == LLONG_MAX ? -1 : best;
 	}
 	return dist;
 }
@@ -40,8 +40,8 @@ int main()
 	int n,m,k;
 	cin>>n>>m>>k;
 
-	vector<int> shops(k);
-	vector<vector<int>> graph(n+1);
+	vector<long long> shops(k);
+	vector<vector<long long>> graph(n+1);
 
 	dist.assign(n+1,-1);
 
@@ -51,14 +51,14 @@ int main()
 
 
 	for(int i=0; i<m; i++) {
-		int a,b;
+		long long a,b;
 		cin>>a>>b;
 
 		graph[a].push_back(b);
 		graph[b].push_back(a);
 	}
 
-	vector<int> ans = nearestShops(graph,shops);
+	vector<long long> ans = nearestShops(graph,shops);
 
 	for(int i=1; i<ans.size(); i++) {
 		cout<<ans[i]<<" ";

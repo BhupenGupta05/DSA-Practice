@@ -42,6 +42,11 @@ long long highScore(int n, vector<tuple<int,int,long long>>& edges) {
 	    }
 	}
 	
+	// This is a modification of the standard Bellman-Ford algorithm to find positive cycles reachable from 1 and can reach n.
+	// In the standard Bellman-Ford, we relax the edge one more time to see if it reduces or increases to check for a negative or positive cycle.
+	// But here, we can't do that as it is possible that the cycle is in the irrelevant part of the graph and doesn't lead to n.
+	// So, we mark those edges and the edges associated with the marked ones as infinite.
+	// After that, we check if n is marked as infinite or not.
 	vector<bool> infinite(n+1,false);
 	for(int i=1; i<=n; i++) {
 	    for(auto [a,b,x]: edges) {

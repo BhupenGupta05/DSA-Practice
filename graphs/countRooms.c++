@@ -66,17 +66,19 @@ int countRooms(vector<vector<char>>& map) {
 	return rooms;
 }
 
-int main()
-{
-	vector<vector<char>> map = {
-		{'#','#','#','#','#','#','#','#'},
-		{'#','.','.','#','.','.','.','#'},
-		{'#','#','#','#','.','#','.','#'},
-		{'#','.','.','#','.','.','.','#'},
-		{'#','#','#','#','#','#','#','#'},
-	};
+int main() {
+    int m, n;
+    cin >> m >> n;
 
-	cout<<countRooms(map);
+    vector<vector<char>> grid(m, vector<char>(n));
 
-	return 0;
+    for(int i = 0; i < m; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> grid[i][j];
+        }
+    }
+
+    cout << countRooms(grid) << endl;
+
+    return 0;
 }

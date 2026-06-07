@@ -112,26 +112,26 @@ pair<int,string> shortestPathLabyrinth(vector<vector<char>>& map) {
 	return {pathLen,path};
 }
 
-int main()
-{
-	vector<vector<char>> map = {
-		{'#','#','#','#','#','#','#','#'},
-		{'#','.','A','#','.','.','.','#'},
-		{'#','.','#','#','.','#','B','#'},
-		{'#','.','.','.','.','.','.','#'},
-		{'#','#','#','#','#','#','#','#'},
-	};
+int main() {
+    int n, m;
+    cin >> n >> m;
 
-	auto [len,path] = shortestPathLabyrinth(map);
+    vector<vector<char>> grid(n, vector<char>(m));
 
-	if(len == -1) cout<<"NO";
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            cin >> grid[i][j];
+        }
+    }
+
+	auto [len,path] = shortestPathLabyrinth(grid);
+
+    	if(len == -1) cout<<"NO";
 	else {
 		cout<<"YES\n";
 		cout<<len<<"\n";
 		cout<<path<<"\n";
 	}
 
-
-
-	return 0;
+    return 0;
 }
